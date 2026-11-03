@@ -1,6 +1,9 @@
 ---
 import CompanyLogo from "@/components/ui/CompanyLogo.astro";
 import { companies } from "@/config/home";
+
+/* Each half must be wider than the widest screen, or a gap shows before the loop restarts. */
+const half = [...companies, ...companies, ...companies];
 ---
 
 <section class="marquee pt-28 pb-6 text-muted sm:pt-36" aria-label="Customers">
@@ -8,8 +11,8 @@ import { companies } from "@/config/home";
     {
       [0, 1].map((copy) => (
         <ul class="flex shrink-0 items-center gap-16 pr-16" aria-hidden={copy === 1 ? "true" : undefined}>
-          {companies.map((name) => (
-            <li>
+          {half.map((name, index) => (
+            <li aria-hidden={index >= companies.length ? "true" : undefined}>
               <CompanyLogo name={name} class="text-xl" />
             </li>
           ))}
@@ -26,7 +29,7 @@ import { companies } from "@/config/home";
   }
 
   .marquee-track {
-    animation: marquee 40s linear infinite;
+    animation: marquee 120s linear infinite;
   }
 
   .marquee:hover .marquee-track {
@@ -46,7 +49,8 @@ import { companies } from "@/config/home";
       justify-content: center;
     }
 
-    .marquee-track > ul:last-child {
+    .marquee-track > ul:last-child,
+    .marquee-track li[aria-hidden] {
       display: none;
     }
   }
