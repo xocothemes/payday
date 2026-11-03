@@ -2,7 +2,7 @@
 
 All notable changes to Payday are documented here.
 
-## Unreleased
+## 1.0.0 - 2026-11-03
 
 - Initial release.
 - Free Astro 7 theme for SaaS and product sites with home, about, contact, and 404 pages.
