@@ -1,0 +1,53 @@
+---
+import CompanyLogo from "@/components/ui/CompanyLogo.astro";
+import { companies } from "@/config/home";
+---
+
+<section class="marquee pt-28 pb-6 text-muted sm:pt-36" aria-label="Customers">
+  <div class="marquee-track flex w-max">
+    {
+      [0, 1].map((copy) => (
+        <ul class="flex shrink-0 items-center gap-16 pr-16" aria-hidden={copy === 1 ? "true" : undefined}>
+          {companies.map((name) => (
+            <li>
+              <CompanyLogo name={name} class="text-xl" />
+            </li>
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+  }
+
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      width: auto;
+      justify-content: center;
+    }
+
+    .marquee-track > ul:last-child {
+      display: none;
+    }
+  }
+</style>
