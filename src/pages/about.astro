@@ -38,7 +38,7 @@ const { story, facts, principles, milestones, team } = about;
         facts.map((fact, index) => (
           <div
             class:list={[
-              "reveal flex flex-col-reverse border-line p-6 sm:p-8",
+              "reveal flex flex-col-reverse justify-end border-line p-6 sm:p-8",
               index % 2 === 0 && "border-r",
               index < 2 && "border-b lg:border-b-0",
               index === 1 && "lg:border-r",
