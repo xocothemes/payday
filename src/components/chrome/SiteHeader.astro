@@ -67,7 +67,7 @@ const isCurrent = (href: string) => !href.includes("#") && href !== "/" && path.
         }
       </ul>
       <div class="mt-auto grid gap-3 pt-10">
-        <CtaButton href={cta.href} label={cta.label} class="w-full justify-between" />
+        <CtaButton href={cta.href} label={cta.label} class="w-full max-w-xs justify-between justify-self-center" />
         <a href={signIn.href} class="py-2 text-center text-muted">{signIn.label}</a>
       </div>
     </nav>
